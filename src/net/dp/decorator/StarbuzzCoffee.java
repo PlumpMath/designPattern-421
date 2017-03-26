@@ -14,9 +14,11 @@ public class StarbuzzCoffee {
 		System.out.println(beverage.getDescription() + " $" + beverage.cost());
 
 		Beverage beverage2 = new DarkRoast();
-		beverage2 = new Mocha(beverage2);
-		beverage2 = new Mocha(beverage2);
-		beverage2 = new Whip(beverage2);
+//		beverage2 = new Mocha(beverage2);
+		//这里传入的beverage2不是Beverage beverage2 = new DarkRoast();而是经过修饰后的beverage2 = new Mocha(beverage2);每次传入的都是经过修饰后的
+//		beverage2 = new Mocha(new Mocha(beverage2));
+		//如果要一个对象可以被装饰，辣么这个可以被装饰的对象必须要接收一个父类的引用
+		beverage2 = new Whip(new Mocha(new Mocha(beverage2)));
 		System.out
 				.println(beverage2.getDescription() + " $" + beverage2.cost());
 
